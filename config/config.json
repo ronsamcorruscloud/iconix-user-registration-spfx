@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "user-registration-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/userRegistration/UserRegistrationWebPart.js",
+          "manifest": "./src/webparts/userRegistration/UserRegistrationWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "UserRegistrationWebPartStrings": "lib/webparts/userRegistration/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "user-registration-client-side-solution",
+    "id": "9abc4215-4b17-4e3e-a1cd-13c560dff9a9",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [{  
+      "resource": "Microsoft Graph",  
+      "scope": "User.Invite.All"  
+    },
+    {  
+      "resource": "Microsoft Graph",  
+      "scope": "User.ReadWrite.All"  
+    },
+    {  
+      "resource": "Microsoft Graph",  
+      "scope": "Directory.ReadWrite.All"  
+    },
+    {  
+      "resource": "Microsoft Graph",  
+      "scope": "User.ManageIdentities.All"  
+    }],
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/user-registration.sppkg"
+  }
+}
