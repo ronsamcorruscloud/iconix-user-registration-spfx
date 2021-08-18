@@ -165,45 +165,26 @@ export default class UserRegistration extends React.Component<IUserRegistrationP
             validationSchema={UserRegistrationSchema}
             onSubmit={(values, { resetForm }) => {
               this.setState({ success: null, message: '', isLoading: true })
-              if (!this.state.tempID) {
-                this.inviteUser(values.email, values.url['key'])
-                  .then((res: any) => {
-                    this.setState({ tempID: res.invitedUser.id })
-                    this.updateUser(res.invitedUser.id, values)
-                      .then(response => {
-                        shareSiteWithUser(values.email, values.group['key'])
-                          .then(result => {
-                            this.setState({ success: true, message: "Successfully invited the user", isLoading: false });
-                            resetForm()
-                          })
-                          .catch(err => {
-                            this.setState({ success: false, message: "Could not add user to the sharepoint group", isLoading: false })
-                          })
-                      })
-                      .catch(err => {
-                        this.setState({ success: false, message: "Error happened during updating details. Try submitting again", isLoading: false })
-                      })
-                  })
-                  .catch(err => {
-                    this.setState({ success: false, message: "Error inviting the user", isLoading: false })
-                  })
-              }
-              else {
-                this.updateUser(this.state.tempID, values)
-                  .then(response => {
-                    shareSiteWithUser(values.email, values.group['key'])
-                      .then(result => {
-                        this.setState({ success: true, message: "Successfully invited the user", isLoading: false });
-                        resetForm()
-                      })
-                      .catch(err => {
-                        this.setState({ success: false, message: "Could not add user to the sharepoint group", isLoading: false })
-                      })
-                  })
-                  .catch(err => {
-                    this.setState({ success: false, message: "Error happened during updating details. Try submitting again", isLoading: false })
-                  })
-              }
+              this.inviteUser(values.email, values.url['key'])
+                .then((res: any) => {
+                  this.updateUser(res.invitedUser.id, values)
+                    .then(response => {
+                      shareSiteWithUser(values.email, values.group['key'])
+                        .then(result => {
+                          this.setState({ success: true, message: "Successfully invited the user", isLoading: false });
+                          resetForm()
+                        })
+                        .catch(err => {
+                          this.setState({ success: false, message: "Could not add user to the sharepoint group", isLoading: false })
+                        })
+                    })
+                    .catch(err => {
+                      this.setState({ success: false, message: "Error happened during updating details. Try submitting again", isLoading: false })
+                    })
+                })
+                .catch(err => {
+                  this.setState({ success: false, message: "Error inviting the user", isLoading: false })
+                })
             }}
           >
             {({

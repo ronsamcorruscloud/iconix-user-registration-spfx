@@ -1,6 +1,7 @@
 import { sp, SPHttpClient } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/site-groups/web";
+import axios from 'axios';
 
 const client = new SPHttpClient();
 
@@ -59,5 +60,19 @@ export const shareSiteWithUser = (email, id) => {
                 console.log(d)
                 return d;
             })
+    )
+}
+
+export const updateUserByID = ( id, data ) => {
+    return (
+        axios({
+            method: 'post',
+            headers: {
+                'app-secret': '',
+            },
+            url: '/user/update',
+            data: data
+          })
+          .then(res => res)
     )
 }

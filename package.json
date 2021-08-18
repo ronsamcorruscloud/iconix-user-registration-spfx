@@ -21,6 +21,7 @@
     "@pnp/graph": "^2.6.0",
     "@pnp/sp": "^2.6.0",
     "@types/yup": "^0.29.11",
+    "axios": "^0.21.1",
     "formik": "^2.2.9",
     "office-ui-fabric-react": "6.214.0",
     "react": "16.8.5",
