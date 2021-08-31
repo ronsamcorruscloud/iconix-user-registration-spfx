@@ -21,10 +21,10 @@
     "@pnp/graph": "^2.6.0",
     "@pnp/sp": "^2.6.0",
     "@types/yup": "^0.29.11",
-    "axios": "^0.21.1",
     "formik": "^2.2.9",
     "office-ui-fabric-react": "6.214.0",
     "react": "16.8.5",
+    "react-csv-reader": "^3.3.1",
     "react-dom": "16.8.5",
     "yup": "^0.32.9"
   },
@@ -41,6 +41,6 @@
     "@types/react-dom": "16.8.3",
     "@types/webpack-env": "1.13.1",
     "ajv": "~5.2.2",
-    "gulp": "~3.9.1"
+    "gulp": "^3.9.1"
   }
 }

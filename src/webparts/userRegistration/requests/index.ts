@@ -1,7 +1,11 @@
 import { sp, SPHttpClient } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/site-groups/web";
-import axios from 'axios';
+import {
+    HttpClient,
+    HttpClientResponse,
+    IHttpClientOptions
+} from '@microsoft/sp-http';
 
 const client = new SPHttpClient();
 
@@ -63,16 +67,37 @@ export const shareSiteWithUser = (email, id) => {
     )
 }
 
-export const updateUserByID = ( id, data ) => {
+export const updateUserByID = (id, data, context) => {
+    const user = {
+        displayName: data.firstName + ' ' + data.lastName,
+        mail: data.email,
+        companyName: data.company,
+        jobTitle: data.job_title
+    };
+    const requestHeaders: Headers = new Headers();
+    requestHeaders.append(
+        "Content-type",
+        "application/x-www-form-urlencoded"
+    );
+    const body  = JSON.stringify({
+        user_id: id,
+        user,
+        'app-secret': 'ICNXCRSCLD21'
+    })
+    const url = 'https://user-registration-iconix.azurewebsites.net/user/update';
+    const httpClientOptions: IHttpClientOptions = {
+        body: body,
+        headers: requestHeaders
+      };
     return (
-        axios({
-            method: 'post',
-            headers: {
-                'app-secret': '',
-            },
-            url: '/user/update',
-            data: data
-          })
-          .then(res => res)
+        context.httpClient.post(
+            url,
+            HttpClient.configurations.v1,
+            httpClientOptions
+        )
+        .then(res => res)
+        .catch(err => {
+            console.log('error while updating', err)
+        })
     )
 }

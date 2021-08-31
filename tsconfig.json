@@ -31,7 +31,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx"
-  ],
+, "src/webparts/userRegistration/components/bulk-invite"  ],
   "exclude": [
     "node_modules",
     "lib"
